@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Galaxial</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="../index.html"><span></span>Galaxial</a>
+  <div class="nav-links">
+    <a href="../docs/guide.html">Docs</a>
+    <a href="privacy.html" class="active">Legal</a>
+  </div>
+</nav>
+
+<div class="page">
+  <span class="badge legal">Legal</span>
+  <div class="hero">
+    <div class="hero-eyebrow">Tantième LLC</div>
+    <h1>Privacy policy</h1>
+    <p>Last updated: June 2026</p>
+  </div>
+
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('human')">Human version</button>
+    <button class="lang-btn" onclick="setLang('legal')">Legal version</button>
+  </div>
+
+  <!-- HUMAN VERSION -->
+  <div class="lang-pane active" id="pane-human">
+
+    <h2>The short version</h2>
+    <p>We store your conversations and documents so Galaxial can remember them for you. We don't sell your data, we don't use it to train AI models, and you can ask us to delete everything at any time.</p>
+
+    <h2>What we collect</h2>
+    <ul>
+      <li>Your email address and account info when you sign up</li>
+      <li>Documents you upload to Galaxial</li>
+      <li>Your conversations with Galaxial</li>
+      <li>Basic usage information (like when you logged in)</li>
+    </ul>
+
+    <h2>Why we collect it</h2>
+    <p>The whole point of Galaxial is memory — so we need to store your conversations and documents to make that work. We don't collect anything we don't need.</p>
+
+    <h2>Who sees your data</h2>
+    <p>Only you. We use a small number of trusted third-party services to run Galaxial (like our cloud host and payment processor), but none of them can read your conversations or documents.</p>
+
+    <h2>Your rights</h2>
+    <ul>
+      <li>You can download a copy of all your data at any time</li>
+      <li>You can ask us to delete your account and everything in it</li>
+      <li>If you're in the EU or UK, you have additional rights under GDPR — see the legal version for details</li>
+    </ul>
+
+    <h2>Cookies</h2>
+    <p>We use minimal cookies — only what's necessary to keep you logged in. No advertising cookies, no tracking.</p>
+
+    <h2>Questions?</h2>
+    <p>Email us at <a href="mailto:privacy@galaxial.app">privacy@galaxial.app</a> and we'll get back to you.</p>
+
+  </div>
+
+  <!-- LEGAL VERSION -->
+  <div class="lang-pane" id="pane-legal">
+
+    <h2>1. Controller</h2>
+    <p>Tantième LLC ("Company", "we", "us") is the data controller for personal data processed through the Galaxial platform ("Service"). Contact: <a href="mailto:privacy@galaxial.app">privacy@galaxial.app</a>.</p>
+
+    <h2>2. Data collected</h2>
+    <p>We collect and process the following categories of personal data:</p>
+    <ul>
+      <li><strong>Account data:</strong> email address, hashed password, account creation timestamp</li>
+      <li><strong>User content:</strong> documents uploaded to the Service, conversation history, memory records derived from conversations</li>
+      <li><strong>Usage data:</strong> session timestamps, feature usage logs, error logs</li>
+      <li><strong>Payment data:</strong> processed by Stripe Inc.; we do not store full card details</li>
+    </ul>
+
+    <h2>3. Legal basis for processing (GDPR)</h2>
+    <ul>
+      <li>Performance of contract (Art. 6(1)(b)): account management, core Service functionality</li>
+      <li>Legitimate interests (Art. 6(1)(f)): security, fraud prevention, service improvement</li>
+      <li>Legal obligation (Art. 6(1)(c)): compliance with applicable law</li>
+    </ul>
+
+    <h2>4. Data retention</h2>
+    <p>Account data is retained for the duration of your account plus 30 days following deletion. Usage logs are retained for 90 days. You may request immediate deletion at any time.</p>
+
+    <h2>5. Data transfers</h2>
+    <p>Data may be processed by sub-processors located outside the European Economic Area. All transfers are subject to appropriate safeguards including Standard Contractual Clauses where required.</p>
+
+    <h2>6. Your rights</h2>
+    <p>You have the right to: access your personal data; rectify inaccurate data; erasure ("right to be forgotten"); portability; restriction of processing; object to processing. To exercise these rights, contact <a href="mailto:privacy@galaxial.app">privacy@galaxial.app</a>. EU/UK residents may lodge complaints with their local supervisory authority.</p>
+
+    <h2>7. AI and automated processing</h2>
+    <p>User content is processed by third-party AI inference providers to deliver the Service. User data is not used to train AI models. No solely automated decisions with legal or similarly significant effects are made about users.</p>
+
+    <h2>8. Cookies</h2>
+    <p>We use strictly necessary cookies for session management. No third-party advertising or tracking cookies are used.</p>
+
+    <h2>9. Changes</h2>
+    <p>Material changes to this policy will be communicated via email to registered users with at least 14 days notice prior to taking effect.</p>
+
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Tantième LLC — <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="mailto:hello@galaxial.app">hello@galaxial.app</a></p>
+</footer>
+
+<script>
+function setLang(lang) {
+  document.querySelectorAll('.lang-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('pane-' + lang).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galaxial — Docs & Legal</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+.grid-card {
+  display: block;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  text-decoration: none;
+  transition: border-color .15s, background .15s;
+}
+.grid-card:hover { border-color: var(--border2); background: var(--bg3); text-decoration: none; }
+.grid-card-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+.grid-card-label.docs  { color: var(--accent2); }
+.grid-card-label.legal { color: #f09090; }
+.grid-card h3 { font-family: var(--font-head); font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 6px; text-transform: none; letter-spacing: 0; }
+.grid-card p  { font-size: 13px; color: var(--muted); margin: 0; }
+@media (max-width: 540px) { .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html"><span></span>Galaxial</a>
+  <div class="nav-links">
+    <a href="docs/guide.html">Docs</a>
+    <a href="legal/privacy.html">Legal</a>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="hero">
+    <div class="hero-eyebrow">docs.galaxial.app</div>
+    <h1>Documentation<br>& Legal</h1>
+    <p>Everything you need to understand Galaxial — how it works, how to use it, and how your data is protected.</p>
+  </div>
+
+  <h2>User docs</h2>
+  <div class="grid">
+    <a class="grid-card" href="docs/guide.html">
+      <div class="grid-card-label docs">Guide</div>
+      <h3>How Galaxial works</h3>
+      <p>What the memory system does and how to get the most from it.</p>
+    </a>
+    <a class="grid-card" href="docs/getting-started.html">
+      <div class="grid-card-label docs">Getting started</div>
+      <h3>Your first session</h3>
+      <p>A walkthrough of your first conversation with Galaxial.</p>
+    </a>
+    <a class="grid-card" href="docs/faq.html">
+      <div class="grid-card-label docs">FAQ</div>
+      <h3>Common questions</h3>
+      <p>Answers to the things people ask most.</p>
+    </a>
+  </div>
+
+  <h2>Legal</h2>
+  <div class="grid">
+    <a class="grid-card" href="legal/privacy.html">
+      <div class="grid-card-label legal">Privacy</div>
+      <h3>Privacy policy</h3>
+      <p>What data Galaxial collects, how it's stored, and your rights.</p>
+    </a>
+    <a class="grid-card" href="legal/terms.html">
+      <div class="grid-card-label legal">Terms</div>
+      <h3>Terms of service</h3>
+      <p>The agreement between you and Tantième LLC.</p>
+    </a>
+    <a class="grid-card" href="legal/acceptable-use.html">
+      <div class="grid-card-label legal">Acceptable use</div>
+      <h3>Acceptable use policy</h3>
+      <p>What you can and can't do on the platform.</p>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Tantième LLC — <a href="legal/privacy.html">Privacy</a> · <a href="legal/terms.html">Terms</a> · <a href="mailto:hello@galaxial.app">hello@galaxial.app</a></p>
+</footer>
+
+</body>
+</html>

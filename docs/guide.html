@@ -3,91 +3,166 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How Galaxial Works — Galaxial Docs</title>
-<link rel="stylesheet" href="../assets/style.css">
+<title>How Galaxial works — Galaxial Docs</title>
+<meta name="description" content="How Galaxial’s memory works and how to get the most from it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#03020a;--surface:#0d0b1a;--rim:#1a1530;
+  --pulse:#7b5ea7;--glow:#a87de8;--gold:#d4a853;--gold-dim:#9a7940;
+  --text:#f0ecff;--muted:#b0a8cc;--accent:#ff6b35;
+  --mono:'Space Mono',ui-monospace,Menlo,Consolas,monospace;
+  --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+body{margin:0;background:var(--void);color:var(--text);font-family:var(--serif);
+  font-size:1.25rem;line-height:1.75;font-weight:400;-webkit-font-smoothing:antialiased;}
+a{color:var(--glow);text-underline-offset:.2em;}
+a:hover{color:var(--text);}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+.skip{position:absolute;left:-9999px;top:0;background:var(--gold);color:var(--void);
+  font-family:var(--mono);font-size:.75rem;padding:.6rem 1rem;z-index:10;}
+.skip:focus{left:1rem;top:1rem;}
+
+.site{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;
+  padding:1.3rem clamp(1.25rem,5vw,2.5rem);border-bottom:1px solid var(--rim);}
+.wordmark{font-family:var(--mono);font-size:.78rem;letter-spacing:.3em;color:var(--gold);
+  text-transform:uppercase;text-decoration:none;}
+.site nav{display:flex;gap:1.5rem;}
+.site nav a{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--muted);
+  text-decoration:none;padding-bottom:.15rem;border-bottom:1px solid transparent;}
+.site nav a:hover{color:var(--text);}
+.site nav a[aria-current="page"]{color:var(--text);border-bottom-color:var(--gold);}
+
+main{max-width:40rem;margin:0 auto;padding:4.5rem clamp(1.25rem,5vw,2rem) 5rem;}
+h1{font-weight:300;font-size:clamp(2.6rem,7vw,4.2rem);line-height:1;letter-spacing:-.02em;margin:0 0 1.2rem;}
+.meta{font-family:var(--mono);font-size:.72rem;color:var(--muted);margin:0;}
+.lede{font-size:1.35rem;color:var(--muted);margin:2.2rem 0 2.5rem;}
+
+.toc{border-top:1px solid var(--rim);border-bottom:1px solid var(--rim);padding:1.4rem 0;margin-bottom:1rem;}
+.toc ol{margin:0;padding-left:1.4rem;columns:2 14rem;column-gap:2rem;}
+.toc li{font-size:1.1rem;line-height:1.6;color:var(--gold-dim);}
+.toc a{color:var(--muted);text-decoration:none;}
+.toc a:hover{color:var(--text);}
+
+h2{font-weight:400;font-size:1.8rem;line-height:1.25;letter-spacing:-.005em;margin:3.5rem 0 1rem;scroll-margin-top:1.5rem;}
+h2 .n{font-family:var(--mono);font-size:.78rem;color:var(--gold-dim);margin-right:.8rem;vertical-align:.3em;}
+h3{font-weight:600;font-size:1.3rem;margin:2rem 0 .4rem;}
+p{margin:0 0 1.1rem;}
+ul{margin:0 0 1.2rem;padding-left:1.3rem;}
+li{margin-bottom:.55rem;}
+li::marker{color:var(--gold-dim);}
+strong{font-weight:600;}
+
+.table-wrap{overflow-x:auto;margin:1.2rem 0 1.5rem;border:1px solid var(--rim);}
+table{border-collapse:collapse;width:100%;min-width:32rem;font-size:1.08rem;line-height:1.5;}
+th,td{text-align:left;vertical-align:top;padding:.8rem 1rem;border-bottom:1px solid var(--rim);}
+th{font-family:var(--mono);font-size:.7rem;font-weight:400;color:var(--muted);background:var(--surface);}
+tr:last-child td{border-bottom:none;}
+td:first-child{color:var(--gold);white-space:nowrap;}
+
+.needs{font-family:var(--mono);font-size:.78rem;line-height:1.5;color:var(--accent);
+  background:rgba(255,107,53,.08);border:1px dashed rgba(255,107,53,.55);padding:.05rem .45rem;}
+
+footer{border-top:1px solid var(--rim);padding:2rem clamp(1.25rem,5vw,2.5rem);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+footer p{margin:0;font-family:var(--mono);font-size:.62rem;color:rgba(176,168,204,.7);}
+footer nav{display:flex;gap:1.5rem;flex-wrap:wrap;}
+footer nav a{font-family:var(--mono);font-size:.62rem;color:var(--muted);text-decoration:none;}
+footer nav a:hover{color:var(--text);}
+
+/* ---- docs-site components (same tokens as the legal pages) ---- */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1px;background:var(--rim);
+  border:1px solid var(--rim);margin:1rem 0 2.5rem;}
+.card{display:block;background:var(--surface);padding:1.5rem 1.6rem;text-decoration:none;color:var(--text);
+  transition:background .2s;}
+.card:hover{background:#120f22;color:var(--text);}
+.card-label{display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.5rem;}
+.card-title{display:block;font-size:1.35rem;line-height:1.3;margin-bottom:.35rem;}
+.card-desc{display:block;font-size:1.05rem;line-height:1.55;color:var(--muted);}
+.box{background:var(--surface);border:1px solid var(--rim);border-left:2px solid var(--gold);
+  padding:1.1rem 1.3rem;margin:1.5rem 0;}
+.box p{margin:0;}
+.example{border:1px solid var(--rim);margin:1rem 0;}
+.example-label{font-family:var(--mono);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;
+  padding:.5rem 1rem;border-bottom:1px solid var(--rim);background:var(--surface);}
+.example-label.less{color:var(--muted);}
+.example-label.better{color:var(--gold);}
+.example p{margin:0;padding:.9rem 1rem;font-style:italic;}
+.tips{list-style:none;padding:0;margin:0 0 1.5rem;}
+.tips li{border-top:1px solid var(--rim);padding:1.1rem 0;margin:0;}
+.tips li:last-child{border-bottom:1px solid var(--rim);}
+.tip-title{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.35rem;}
+</style>
 </head>
 <body>
+<a class="skip" href="#content">Skip to content</a>
 
-<nav>
-  <a class="nav-brand" href="../index.html"><span></span>Galaxial</a>
-  <div class="nav-links">
-    <a href="guide.html" class="active">Docs</a>
-    <a href="../legal/privacy.html">Legal</a>
-  </div>
-</nav>
+<header class="site">
+  <a class="wordmark" href="../index.html">Galaxial</a>
+  <nav aria-label="Docs">
+    <a href="../docs/guide.html" aria-current="page">Guide</a>
+    <a href="../legal/privacy.html">Privacy</a>
+    <a href="../legal/terms.html">Terms</a>
+  </nav>
+</header>
 
-<div class="page">
-  <span class="badge user">User guide</span>
-  <div class="hero">
-    <div class="hero-eyebrow">Documentation</div>
-    <h1>How Galaxial works</h1>
-    <p>Galaxial remembers what matters across every conversation — so you never have to re-explain yourself.</p>
-  </div>
+<main id="content">
+  <p class="meta">User guide</p>
+  <h1>How Galaxial works</h1>
+  <p class="lede">Galaxial remembers what matters across your conversations — so you don’t have to re-explain yourself.</p>
 
   <h2>What makes it different</h2>
-  <p>Most AI tools forget everything the moment you close the tab. Ask them the same question tomorrow and you're starting from scratch.</p>
-  <p>Galaxial remembers. Tell it you're planning a trip to Japan, working on a small business idea, or trying to learn guitar — and next time you come back, it already knows.</p>
+  <p>Most AI tools forget everything the moment you close the tab. Ask them the same question tomorrow and you’re starting from scratch.</p>
+  <p>Galaxial remembers. Tell it you’re planning a trip to Japan, working on a small business idea, or trying to learn guitar — and next time you come back, it already knows.</p>
 
   <h2>How to start a conversation</h2>
-  <p>The more specific you are upfront, the better Galaxial can help. You don't need to be technical — just talk to it like you'd talk to a friend who happens to know a lot.</p>
-
+  <p>The more specific you are upfront, the better Galaxial can help. You don’t need to be technical — just talk to it like you’d talk to a friend who happens to know a lot.</p>
   <div class="example">
-    <div class="ex-label bad">Less helpful</div>
-    <div class="ex-body"><p>"Hey, can you help me with my thing?"</p></div>
+    <div class="example-label less">Less helpful</div>
+    <p>“Hey, can you help me with my thing?”</p>
   </div>
   <div class="example">
-    <div class="ex-label good">Much better</div>
-    <div class="ex-body"><p>"Hey, I'm working on a small catering business called Lena's Kitchen. I want help writing a menu description for my Instagram page."</p></div>
+    <div class="example-label better">Much better</div>
+    <p>“Hey, I’m working on a small catering business called Lena’s Kitchen. I want help writing a menu description for my Instagram page.”</p>
   </div>
 
   <h2>Tips for getting the most from it</h2>
-
-  <div class="tip">
-    <div class="tip-icon">📌</div>
-    <div>
-      <div class="tip-title">Name your projects</div>
-      <p>If you're working on something ongoing — a business, a trip, a creative project — give it a name and use it consistently. Galaxial will keep it all organised.</p>
-    </div>
-  </div>
-  <div class="tip">
-    <div class="tip-icon">✏️</div>
-    <div>
-      <div class="tip-title">Correct it when it gets something wrong</div>
-      <p>Just say "actually that changed — it's now X." Galaxial will update and move on. No need to start over.</p>
-    </div>
-  </div>
-  <div class="tip">
-    <div class="tip-icon">🔖</div>
-    <div>
-      <div class="tip-title">Tell it what's still open</div>
-      <p>If you're in the middle of a decision, say so. "I haven't decided yet" or "this is still a work in progress" helps Galaxial treat it as ongoing rather than settled.</p>
-    </div>
-  </div>
-  <div class="tip">
-    <div class="tip-icon">💬</div>
-    <div>
-      <div class="tip-title">Just talk to it naturally</div>
-      <p>You don't need special commands. Galaxial figures out what's important from how you talk. The more you use it, the better it gets at understanding you.</p>
-    </div>
-  </div>
-
-  <hr>
-
-  <h2>What it won't do</h2>
-  <ul>
-    <li>It won't invent memories or fill gaps with guesses</li>
-    <li>It won't mix up your information with someone else's</li>
-    <li>It won't drift off topic when you're mid-project</li>
+  <ul class="tips">
+    <li><span class="tip-title">Name your projects</span>If you’re working on something ongoing — a business, a trip, a creative project — give it a name and use it consistently. Using the same name each time makes it easier for Galaxial to find what you said about it later.</li>
+    <li><span class="tip-title">Correct it when it gets something wrong</span>Just say “actually that changed — it’s now X.” Galaxial will update and move on. No need to start over.</li>
+    <li><span class="tip-title">Tell it what’s still open</span>If you’re in the middle of a decision, say so. “I haven’t decided yet” or “this is still a work in progress” helps Galaxial treat it as ongoing rather than settled.</li>
+    <li><span class="tip-title">Just talk to it naturally</span>You don’t need special commands. Galaxial figures out what’s important from how you talk. The more you tell it, the more it has to work with.</li>
   </ul>
 
-  <div class="notice">
-    <p>Your conversations are private. Only you can see your history and memory. Galaxial never shares your information with other users.</p>
+  <h2>What to expect</h2>
+  <ul>
+    <li>When it can’t find something in your memory, it says so instead of guessing.</li>
+    <li>It can still get things wrong, so check anything important before you rely on it.</li>
+    <li>Your memory is kept separate from other users’ memory.</li>
+  </ul>
+
+  <div class="box">
+    <p>Your history and memory belong to your account, and Galaxial never shares them with other users. To answer you, Galaxial sends your message and the relevant parts of your memory to Anthropic, the company that makes the AI models it uses. Questions about your data: <a href="mailto:privacy@galaxial.app">privacy@galaxial.app</a>.</p>
   </div>
-</div>
+</main>
 
 <footer>
-  <p>© 2026 Tantième LLC — <a href="../legal/privacy.html">Privacy</a> · <a href="../legal/terms.html">Terms</a> · <a href="mailto:hello@galaxial.app">hello@galaxial.app</a></p>
+  <p>© <span id="yr">2026</span> Tantième LLC. All rights reserved.</p>
+  <nav aria-label="Footer">
+    <a href="https://galaxial.app">Galaxial</a>
+    <a href="../docs/guide.html">Guide</a>
+    <a href="../legal/privacy.html">Privacy</a>
+    <a href="../legal/terms.html">Terms</a>
+    <a href="mailto:hello@galaxial.app">hello@galaxial.app</a>
+  </nav>
 </footer>
-
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
 </body>
 </html>

@@ -4,109 +4,133 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Terms of Service — Galaxial</title>
-<link rel="stylesheet" href="../assets/style.css">
+<meta name="description" content="Terms of Service for Galaxial, being updated.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#03020a;--surface:#0d0b1a;--rim:#1a1530;
+  --pulse:#7b5ea7;--glow:#a87de8;--gold:#d4a853;--gold-dim:#9a7940;
+  --text:#f0ecff;--muted:#b0a8cc;--accent:#ff6b35;
+  --mono:'Space Mono',ui-monospace,Menlo,Consolas,monospace;
+  --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+body{margin:0;background:var(--void);color:var(--text);font-family:var(--serif);
+  font-size:1.25rem;line-height:1.75;font-weight:400;-webkit-font-smoothing:antialiased;}
+a{color:var(--glow);text-underline-offset:.2em;}
+a:hover{color:var(--text);}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+.skip{position:absolute;left:-9999px;top:0;background:var(--gold);color:var(--void);
+  font-family:var(--mono);font-size:.75rem;padding:.6rem 1rem;z-index:10;}
+.skip:focus{left:1rem;top:1rem;}
+
+.site{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;
+  padding:1.3rem clamp(1.25rem,5vw,2.5rem);border-bottom:1px solid var(--rim);}
+.wordmark{font-family:var(--mono);font-size:.78rem;letter-spacing:.3em;color:var(--gold);
+  text-transform:uppercase;text-decoration:none;}
+.site nav{display:flex;gap:1.5rem;}
+.site nav a{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--muted);
+  text-decoration:none;padding-bottom:.15rem;border-bottom:1px solid transparent;}
+.site nav a:hover{color:var(--text);}
+.site nav a[aria-current="page"]{color:var(--text);border-bottom-color:var(--gold);}
+
+main{max-width:40rem;margin:0 auto;padding:4.5rem clamp(1.25rem,5vw,2rem) 5rem;}
+h1{font-weight:300;font-size:clamp(2.6rem,7vw,4.2rem);line-height:1;letter-spacing:-.02em;margin:0 0 1.2rem;}
+.meta{font-family:var(--mono);font-size:.72rem;color:var(--muted);margin:0;}
+.lede{font-size:1.35rem;color:var(--muted);margin:2.2rem 0 2.5rem;}
+
+.toc{border-top:1px solid var(--rim);border-bottom:1px solid var(--rim);padding:1.4rem 0;margin-bottom:1rem;}
+.toc ol{margin:0;padding-left:1.4rem;columns:2 14rem;column-gap:2rem;}
+.toc li{font-size:1.1rem;line-height:1.6;color:var(--gold-dim);}
+.toc a{color:var(--muted);text-decoration:none;}
+.toc a:hover{color:var(--text);}
+
+h2{font-weight:400;font-size:1.8rem;line-height:1.25;letter-spacing:-.005em;margin:3.5rem 0 1rem;scroll-margin-top:1.5rem;}
+h2 .n{font-family:var(--mono);font-size:.78rem;color:var(--gold-dim);margin-right:.8rem;vertical-align:.3em;}
+h3{font-weight:600;font-size:1.3rem;margin:2rem 0 .4rem;}
+p{margin:0 0 1.1rem;}
+ul{margin:0 0 1.2rem;padding-left:1.3rem;}
+li{margin-bottom:.55rem;}
+li::marker{color:var(--gold-dim);}
+strong{font-weight:600;}
+
+.table-wrap{overflow-x:auto;margin:1.2rem 0 1.5rem;border:1px solid var(--rim);}
+table{border-collapse:collapse;width:100%;min-width:32rem;font-size:1.08rem;line-height:1.5;}
+th,td{text-align:left;vertical-align:top;padding:.8rem 1rem;border-bottom:1px solid var(--rim);}
+th{font-family:var(--mono);font-size:.7rem;font-weight:400;color:var(--muted);background:var(--surface);}
+tr:last-child td{border-bottom:none;}
+td:first-child{color:var(--gold);white-space:nowrap;}
+
+.needs{font-family:var(--mono);font-size:.78rem;line-height:1.5;color:var(--accent);
+  background:rgba(255,107,53,.08);border:1px dashed rgba(255,107,53,.55);padding:.05rem .45rem;}
+
+footer{border-top:1px solid var(--rim);padding:2rem clamp(1.25rem,5vw,2.5rem);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+footer p{margin:0;font-family:var(--mono);font-size:.62rem;color:rgba(176,168,204,.7);}
+footer nav{display:flex;gap:1.5rem;flex-wrap:wrap;}
+footer nav a{font-family:var(--mono);font-size:.62rem;color:var(--muted);text-decoration:none;}
+footer nav a:hover{color:var(--text);}
+
+/* ---- docs-site components (same tokens as the legal pages) ---- */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1px;background:var(--rim);
+  border:1px solid var(--rim);margin:1rem 0 2.5rem;}
+.card{display:block;background:var(--surface);padding:1.5rem 1.6rem;text-decoration:none;color:var(--text);
+  transition:background .2s;}
+.card:hover{background:#120f22;color:var(--text);}
+.card-label{display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.5rem;}
+.card-title{display:block;font-size:1.35rem;line-height:1.3;margin-bottom:.35rem;}
+.card-desc{display:block;font-size:1.05rem;line-height:1.55;color:var(--muted);}
+.box{background:var(--surface);border:1px solid var(--rim);border-left:2px solid var(--gold);
+  padding:1.1rem 1.3rem;margin:1.5rem 0;}
+.box p{margin:0;}
+.example{border:1px solid var(--rim);margin:1rem 0;}
+.example-label{font-family:var(--mono);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;
+  padding:.5rem 1rem;border-bottom:1px solid var(--rim);background:var(--surface);}
+.example-label.less{color:var(--muted);}
+.example-label.better{color:var(--gold);}
+.example p{margin:0;padding:.9rem 1rem;font-style:italic;}
+.tips{list-style:none;padding:0;margin:0 0 1.5rem;}
+.tips li{border-top:1px solid var(--rim);padding:1.1rem 0;margin:0;}
+.tips li:last-child{border-bottom:1px solid var(--rim);}
+.tip-title{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.35rem;}
+</style>
 </head>
 <body>
+<a class="skip" href="#content">Skip to content</a>
 
-<nav>
-  <a class="nav-brand" href="../index.html"><span></span>Galaxial</a>
-  <div class="nav-links">
-    <a href="../docs/guide.html">Docs</a>
-    <a href="privacy.html" class="active">Legal</a>
+<header class="site">
+  <a class="wordmark" href="../index.html">Galaxial</a>
+  <nav aria-label="Docs">
+    <a href="../docs/guide.html">Guide</a>
+    <a href="../legal/privacy.html">Privacy</a>
+    <a href="../legal/terms.html" aria-current="page">Terms</a>
+  </nav>
+</header>
+
+<main id="content">
+  <p class="meta">Tantième LLC · Being updated</p>
+  <h1>Terms of Service</h1>
+  <div class="box">
+    <p>Our Terms of Service are being updated to match how Galaxial works today. Until the new version is published, email <a href="mailto:hello@galaxial.app">hello@galaxial.app</a> with any question about the terms.</p>
   </div>
-</nav>
-
-<div class="page">
-  <span class="badge legal">Legal</span>
-  <div class="hero">
-    <div class="hero-eyebrow">Tantième LLC</div>
-    <h1>Terms of service</h1>
-    <p>Last updated: June 2026</p>
-  </div>
-
-  <div class="notice">
-    <p>Full terms will be published when billing is live. Placeholder content below reflects current beta access terms.</p>
-  </div>
-
-  <div class="lang-toggle">
-    <button class="lang-btn active" onclick="setLang('human')">Human version</button>
-    <button class="lang-btn" onclick="setLang('legal')">Legal version</button>
-  </div>
-
-  <div class="lang-pane active" id="pane-human">
-    <h2>The basics</h2>
-    <p>Galaxial is a product made by Tantième LLC. By using it, you agree to these terms. If you don't agree, please don't use the service.</p>
-
-    <h2>What you can do</h2>
-    <ul>
-      <li>Use Galaxial for personal and professional purposes</li>
-      <li>Upload your own documents and have conversations about them</li>
-      <li>Export or delete your data whenever you want</li>
-    </ul>
-
-    <h2>What you can't do</h2>
-    <ul>
-      <li>Use Galaxial to harm, harass, or deceive anyone</li>
-      <li>Upload content you don't have the right to share</li>
-      <li>Try to reverse-engineer or misuse the platform</li>
-      <li>Share your account with others</li>
-    </ul>
-
-    <h2>Your content</h2>
-    <p>Everything you upload belongs to you. We don't claim ownership over your documents or conversations. We only store them to make the Service work.</p>
-
-    <h2>Our responsibility</h2>
-    <p>We do our best to keep Galaxial running reliably and your data safe. But like any online service, we can't guarantee 100% uptime or that things will never go wrong. We're not liable for losses that result from service interruptions.</p>
-
-    <h2>Ending your account</h2>
-    <p>You can delete your account at any time. We'll remove your data within 30 days. We may also suspend accounts that violate these terms.</p>
-  </div>
-
-  <div class="lang-pane" id="pane-legal">
-    <h2>1. Agreement</h2>
-    <p>These Terms of Service ("Terms") constitute a binding agreement between you ("User") and Tantième LLC ("Company") governing access to and use of the Galaxial platform ("Service"). By accessing the Service, you accept these Terms in full.</p>
-
-    <h2>2. Eligibility</h2>
-    <p>You must be at least 18 years of age to use the Service. By using the Service, you represent that you meet this requirement.</p>
-
-    <h2>3. License</h2>
-    <p>Subject to these Terms, the Company grants you a limited, non-exclusive, non-transferable, revocable license to access and use the Service for personal and commercial purposes in accordance with these Terms.</p>
-
-    <h2>4. User content</h2>
-    <p>You retain all ownership rights to content you upload to the Service ("User Content"). You grant the Company a limited license to store, process, and transmit User Content solely as necessary to provide the Service. The Company does not claim ownership of User Content and does not use it to train AI models.</p>
-
-    <h2>5. Prohibited conduct</h2>
-    <p>You agree not to: use the Service for unlawful purposes; upload content infringing third-party rights; attempt to circumvent security measures; share account credentials; engage in automated scraping or abuse of the Service.</p>
-
-    <h2>6. Billing</h2>
-    <p>Subscription and billing terms will be published prior to the introduction of paid tiers. Beta access is provided at no charge and may be modified or terminated at the Company's discretion.</p>
-
-    <h2>7. Disclaimer of warranties</h2>
-    <p>The Service is provided "as is" without warranties of any kind, express or implied, including merchantability, fitness for a particular purpose, or non-infringement.</p>
-
-    <h2>8. Limitation of liability</h2>
-    <p>To the maximum extent permitted by law, the Company shall not be liable for indirect, incidental, special, consequential, or punitive damages arising from your use of the Service.</p>
-
-    <h2>9. Termination</h2>
-    <p>Either party may terminate this agreement at any time. The Company may suspend or terminate accounts that violate these Terms without notice.</p>
-
-    <h2>10. Governing law</h2>
-    <p>These Terms are governed by the laws of the United States. Disputes shall be resolved by binding arbitration except where prohibited by applicable law.</p>
-  </div>
-</div>
+</main>
 
 <footer>
-  <p>© 2026 Tantième LLC — <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="mailto:hello@galaxial.app">hello@galaxial.app</a></p>
+  <p>© <span id="yr">2026</span> Tantième LLC. All rights reserved.</p>
+  <nav aria-label="Footer">
+    <a href="https://galaxial.app">Galaxial</a>
+    <a href="../docs/guide.html">Guide</a>
+    <a href="../legal/privacy.html">Privacy</a>
+    <a href="../legal/terms.html">Terms</a>
+    <a href="mailto:hello@galaxial.app">hello@galaxial.app</a>
+  </nav>
 </footer>
-
-<script>
-function setLang(lang) {
-  document.querySelectorAll('.lang-pane').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('pane-' + lang).classList.add('active');
-  event.target.classList.add('active');
-}
-</script>
-
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
 </body>
 </html>
